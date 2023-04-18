@@ -7,7 +7,6 @@ O objetivo do projeto é desenvolver uma solução digital para o problema de di
 * Gabriel Marques da Cunha
 * João Victor Ferreira Pena
 * Marcos Ani Cury Vinagre Silva
-* Nome completo do aluno 4
 
 ## Professores responsáveis
 
