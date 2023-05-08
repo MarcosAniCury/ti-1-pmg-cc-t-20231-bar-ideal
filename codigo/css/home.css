@@ -215,10 +215,14 @@ main {
         flex-direction: column;
     }
 
+    .div-item-img {
+        padding: 10px;
+        max-width: 100%;
+    }
+
     .div-item-mobile-star {
         display: inline;
         color: #fff;
-        margin-left: 10px;
         margin-bottom: 10px;
     }
 
