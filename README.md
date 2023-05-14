@@ -16,3 +16,5 @@ O objetivo do projeto é desenvolver uma solução digital para o problema de di
 ## Instruções de utilização
 
 Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+
+Link do site: https://ti-1-pmg-cc-t-20231-bar-ideal.marcosanicury.repl.co
