@@ -13,6 +13,78 @@
 </head>
 
 <body onload="GenerateItems()">
+    <div id="div-modal-filter">
+        <button id="button-modal-filter-close" onclick="modalFilterAparrence()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                viewBox="0 0 16 16">
+                <path
+                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+            </svg>
+        </button>
+        <form id="div-modal-container" action="javascript:filterSubmit()">
+            <div class="div-modal-row">
+                <div class="div-modal-select">
+                    <p class="p-modal-select">Região</p>
+                    <select id="select-modal-zone" class="select-modal"></select>
+                </div>
+                <div class="div-modal-select">
+                    <p class="p-modal-select">Tipo de ordenação</p>
+                    <select id="select-modal-order" class="select-modal"></select>
+                </div>
+            </div>
+            <div class="div-modal-row">
+                <div class="div-modal-select">
+                    <p class="p-modal-select">Valor médio</p>
+                    <select id="select-modal-mediavalue" class="select-modal"></select>
+                </div>
+                <div class="div-modal-select">
+                    <p class="p-modal-select">Tipo de comida</p>
+                    <select id="select-modal-typefood" class="select-modal"></select>
+                </div>
+            </div>
+            <div class="div-modal-row">
+                <div class="div-modal-select">
+                    <p class="p-modal-select">Tipo de Local</p>
+                    <select id="select-modal-typelocal" class="select-modal"></select>
+                </div>
+            </div>
+            <div id="div-modal-checkboxs">
+                <p id="p-modal-checkboxs">Diferenciais</p>
+                <div id="div-modal-checkbox">
+                    <div class="div-modal-input-checkbox">
+                        <input type="checkbox" id="music" name="music" value="music">
+                        <label for="music" class="label-modal-checkbox">Música ao vivo</label>
+                    </div>
+                    <div class="div-modal-input-checkbox">
+                        <input type="checkbox" id="karaoke" name="karaoke" value="karaoke">
+                        <label for="karaoke" class="label-modal-checkbox">Karaoke</label>
+                    </div>
+                    <div class="div-modal-input-checkbox">
+                        <input type="checkbox" id="chop" name="chop" value="chop">
+                        <label for="chop" class="label-modal-checkbox">Chop Artesanal</label>
+                    </div>
+                </div>
+                <div id="div-modal-checkbox">
+                    <div class="div-modal-input-checkbox">
+                        <input type="checkbox" id="happyhour" name="happyhour" value="happyhour">
+                        <label for="happyhour" class="label-modal-checkbox">Happy Hour</label>
+                    </div>
+                    <div class="div-modal-input-checkbox">
+                        <input type="checkbox" id="sinuca" name="sinuca" value="sinuca">
+                        <label for="sinuca" class="label-modal-checkbox">Sinuca</label>
+                    </div>
+                    <div class="div-modal-input-checkbox">
+                        <input type="checkbox" id="thematic" name="thematic" value="thematic">
+                        <label for="thematic" class="label-modal-checkbox">Temático</label>
+                    </div>
+                </div>
+            </div>
+            <div id="div-modal-button-filter">
+                <button id="button-modal-filter" type="submit">Filtrar</button>
+            </div>
+        </form>
+    </div>
+
     <header>
         <div id="div-logo">
             <img src="../assets/logo.png" alt="Logo" id="logo"></img>
@@ -59,14 +131,14 @@
 
         <div id="div-filter">
             <input id="input-filter-name-bar" type="text" placeholder="Digite o nome do bar" />
-            <button id="button-search" type="button">
+            <button id="button-search" type="button" onclick="filterByName()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-search"
                     viewBox="0 0 16 16">
                     <path
                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
             </button>
-            <button id="button-filter" type="button">
+            <button id="button-filter" type="button" onclick="modalFilterAparrence()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                     class="bi bi-funnel-fill" viewBox="0 0 16 16">
                     <path
