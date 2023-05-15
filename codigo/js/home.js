@@ -36,10 +36,13 @@ function GenerateHTMLCodeItem(item) {
     `;
 
     return `
+   
         <div class="div-item">
-            <div class="div-item-img">
+            <a href="front.html" class="div-item-img">
+            
                 <img src="../assets/Belli_Belli_vista.jpg" alt="Image Bar">
-            </div>
+             
+            </a>
             
             <div class="div-item-text">
                 <p class="p-item-title">${item.name}</p>
@@ -56,6 +59,7 @@ function GenerateHTMLCodeItem(item) {
                 ${divStar}
             </div>
         </div>`;
+        
 }
 
 function GenerateItems(filters) {
@@ -64,7 +68,9 @@ function GenerateItems(filters) {
 
     // Aguardando a finalização da estória do João Vitor Pena para poder pegar o JSON do JSON Server
     let exampleItemJSON = [
+        
         {
+          
             name: "Jundú Restaurante Lounger Bar",
             address: {
                 fully: "Avenida Leovigildo Dias Vieira, 810, Itaguá – Ubatuba, SP",
@@ -80,7 +86,9 @@ function GenerateItems(filters) {
                 "music",
                 "karaoke"
             ]
+          
         },
+        
         {
             name: "Belli Belli Gastrobar",
             address: {
