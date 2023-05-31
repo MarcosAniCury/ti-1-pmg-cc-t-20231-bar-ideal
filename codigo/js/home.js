@@ -36,14 +36,10 @@ function GenerateHTMLCodeItem(item) {
     `;
 
     return `
-   
-        <div class="div-item">
-            <a href="front.html" class="div-item-img">
-            
+        <div class="div-item" onclick="navigateItemDetails(${item.id})">
+            <div class="div-item-img">   
                 <img src="../assets/Belli_Belli_vista.jpg" alt="Image Bar">
-             
-            </a>
-            
+            </div>  
             <div class="div-item-text">
                 <p class="p-item-title">${item.name}</p>
                 <div class="div-item-mobile-star">
@@ -62,117 +58,62 @@ function GenerateHTMLCodeItem(item) {
         
 }
 
-function GenerateItems(filters) {
+async function GenerateItems(filters) {
     let listItems = document.getElementById("div-items");
     listItems.innerHTML = "";
 
-    // Aguardando a finalização da estória do João Vitor Pena para poder pegar o JSON do JSON Server
-    let exampleItemJSON = [
-        
-        {
-          
-            name: "Jundú Restaurante Lounger Bar",
-            address: {
-                fully: "Avenida Leovigildo Dias Vieira, 810, Itaguá – Ubatuba, SP",
-                zone: "Itaguá"
-            },
-            select_comment: "Bar execelente, bonito e possui ótimos drinks.",
-            n_stars: 3,
-            n_reviews: 129,
-            media_value: 70,
-            type_food: "Mexicano",
-            type_local: "Pub",
-            differential: [
-                "music",
-                "karaoke"
-            ]
-          
-        },
-        
-        {
-            name: "Belli Belli Gastrobar",
-            address: {
-                fully: "Avenida José Bento Ribeiro Dantas, Porto da Barra",
-                zone: "Porto da Barra"
-            },
-            select_comment: "Bar com exelente vista.",
-            n_stars: 2,
-            n_reviews: 297,
-            media_value: 20,
-            type_food: "Espetos",
-            type_local: "Restaurante",
-            differential: [
-                "chop",
-                "sinuca"
-            ]
-        },
-        {
-            name: "Teste do marcos",
-            address: {
-                fully: "Rua Araguari 999, Coração Eucarístico",
-                zone: "Coração Eucarístico"
-            },
-            select_comment: "O restaurante é bem bonito e interessante.",
-            n_stars: 5,
-            n_reviews: 151,
-            media_value: 200,
-            type_food: "Italiano",
-            type_local: "Bar",
-            differential: [
-                "thematic",
-                "happyhour",
-                "music"
-            ]
-        }
-    ];
+    let itemsJSONFilter = [];
 
-    let exampleItemJSONFilter = exampleItemJSON;
+    await fetch('http://177.136.202.132:9598/pubs')
+        .then(response => response.json())
+        .then(response => itemsJSONFilter = response)
+        .catch(error => console.log(error));
 
     if (filters?.type == "name") {
-        exampleItemJSONFilter = exampleItemJSONFilter.filter(item => item.name.toLowerCase().startsWith(filters.name.toLowerCase()));
+        itemsJSONFilter = itemsJSONFilter.filter(item => item.name.toLowerCase().startsWith(filters.name.toLowerCase()));
     } else if (filters?.type == "form") {
         if (filters.form[0].value != "--") {
-            exampleItemJSONFilter = exampleItemJSONFilter.filter(item => item.address.zone == filters.form[0].value);
+            itemsJSONFilter = itemsJSONFilter.filter(item => item.address.zone == filters.form[0].value);
         }
         if (filters.form[1].value != "--") {
             if (filters.form[1].value == "Por número de avaliações") {
-                exampleItemJSONFilter = exampleItemJSONFilter.sort((firstItem, secondItem) => {
+                itemsJSONFilter = itemsJSONFilter.sort((firstItem, secondItem) => {
                     return secondItem.n_reviews - firstItem.n_reviews;
                 });
             } else if (filters.form[1].value == "Melhores avaliações") {
-                exampleItemJSONFilter = exampleItemJSONFilter.sort((firstItem, secondItem) => {
+                itemsJSONFilter = itemsJSONFilter.sort((firstItem, secondItem) => {
                     return secondItem.n_stars - firstItem.n_stars;
                 })
             }
         }
         if (filters.form[2].value != "--") {
             let values = filters.form[2].value.split(' ')[1].split('-');
-            exampleItemJSONFilter = exampleItemJSONFilter.filter(item => {
+            itemsJSONFilter = itemsJSONFilter.filter(item => {
                 return item.media_value >= values[0] || values[1] <= item.media_value;
             });
         }
         if (filters.form[3].value != "--") {
-            exampleItemJSONFilter = exampleItemJSONFilter.filter(item => {
+            itemsJSONFilter = itemsJSONFilter.filter(item => {
                 return item.type_food == filters.form[3].value;
             });
         }
         if (filters.form[4].value != "--") {
-            exampleItemJSONFilter = exampleItemJSONFilter.filter(item => {
+            itemsJSONFilter = itemsJSONFilter.filter(item => {
                 return item.type_local == filters.form[4].value;
             });
         }
 
         for (let i = 5; i <= 10; i++) {
             if (filters.form[i].checked) {
-                exampleItemJSONFilter = exampleItemJSONFilter.filter(item => {
+                itemsJSONFilter = itemsJSONFilter.filter(item => {
                     return item.differential.includes(filters.form[i].value);
                 });
             }
         }
     }
 
-    if (exampleItemJSONFilter.length != 0) {
-        exampleItemJSONFilter.forEach(item => {
+    if (itemsJSONFilter.length != 0) {
+        itemsJSONFilter.forEach(item => {
             listItems.innerHTML += GenerateHTMLCodeItem(item);
         });
     } else {
@@ -231,4 +172,12 @@ function filterSubmit() {
         type: "form",
         form: document.forms[0].elements
     });
+}
+
+function navigateItemDetails(id) {
+    const params = {
+        id: id
+    };
+    const queryString = new URLSearchParams(params).toString();
+    window.location.href = 'http://127.0.0.1:5500/codigo/views/details.html?'+queryString;
 }
