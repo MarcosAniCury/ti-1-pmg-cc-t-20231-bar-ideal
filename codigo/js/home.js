@@ -69,48 +69,7 @@ async function GenerateItems(filters) {
         .then(response => itemsJSONFilter = response)
         .catch(error => console.log(error));
 
-    if (filters?.type == "name") {
-        itemsJSONFilter = itemsJSONFilter.filter(item => item.name.toLowerCase().startsWith(filters.name.toLowerCase()));
-    } else if (filters?.type == "form") {
-        if (filters.form[0].value != "--") {
-            itemsJSONFilter = itemsJSONFilter.filter(item => item.address.zone == filters.form[0].value);
-        }
-        if (filters.form[1].value != "--") {
-            if (filters.form[1].value == "Por número de avaliações") {
-                itemsJSONFilter = itemsJSONFilter.sort((firstItem, secondItem) => {
-                    return secondItem.n_reviews - firstItem.n_reviews;
-                });
-            } else if (filters.form[1].value == "Melhores avaliações") {
-                itemsJSONFilter = itemsJSONFilter.sort((firstItem, secondItem) => {
-                    return secondItem.n_stars - firstItem.n_stars;
-                })
-            }
-        }
-        if (filters.form[2].value != "--") {
-            let values = filters.form[2].value.split(' ')[1].split('-');
-            itemsJSONFilter = itemsJSONFilter.filter(item => {
-                return item.media_value >= values[0] || values[1] <= item.media_value;
-            });
-        }
-        if (filters.form[3].value != "--") {
-            itemsJSONFilter = itemsJSONFilter.filter(item => {
-                return item.type_food == filters.form[3].value;
-            });
-        }
-        if (filters.form[4].value != "--") {
-            itemsJSONFilter = itemsJSONFilter.filter(item => {
-                return item.type_local == filters.form[4].value;
-            });
-        }
-
-        for (let i = 5; i <= 10; i++) {
-            if (filters.form[i].checked) {
-                itemsJSONFilter = itemsJSONFilter.filter(item => {
-                    return item.differential.includes(filters.form[i].value);
-                });
-            }
-        }
-    }
+    itemsJSONFilter = filterItems(itemsJSONFilter, filters);
 
     if (itemsJSONFilter.length != 0) {
         itemsJSONFilter.forEach(item => {
@@ -119,8 +78,6 @@ async function GenerateItems(filters) {
     } else {
         listItems.innerHTML = "<div id=\"div-item-none\"><p>Nenhum resultado foi encontrado</p></div>";
     }
-
-
 }
 
 // Functions modal filter
@@ -172,6 +129,52 @@ function filterSubmit() {
         type: "form",
         form: document.forms[0].elements
     });
+}
+
+function filterItems(itemsJSONFilter, filters) {
+    if (filters?.type == "name") {
+        itemsJSONFilter = itemsJSONFilter.filter(item => item.name.toLowerCase().startsWith(filters.name.toLowerCase()));
+    } else if (filters?.type == "form") {
+        if (filters.form[0].value != "--") {
+            itemsJSONFilter = itemsJSONFilter.filter(item => item.address.zone == filters.form[0].value);
+        }
+        if (filters.form[1].value != "--") {
+            if (filters.form[1].value == "Por número de avaliações") {
+                itemsJSONFilter = itemsJSONFilter.sort((firstItem, secondItem) => {
+                    return secondItem.n_reviews - firstItem.n_reviews;
+                });
+            } else if (filters.form[1].value == "Melhores avaliações") {
+                itemsJSONFilter = itemsJSONFilter.sort((firstItem, secondItem) => {
+                    return secondItem.n_stars - firstItem.n_stars;
+                })
+            }
+        }
+        if (filters.form[2].value != "--") {
+            let values = filters.form[2].value.split(' ')[1].split('-');
+            itemsJSONFilter = itemsJSONFilter.filter(item => {
+                return item.media_value >= values[0] || values[1] <= item.media_value;
+            });
+        }
+        if (filters.form[3].value != "--") {
+            itemsJSONFilter = itemsJSONFilter.filter(item => {
+                return item.type_food == filters.form[3].value;
+            });
+        }
+        if (filters.form[4].value != "--") {
+            itemsJSONFilter = itemsJSONFilter.filter(item => {
+                return item.type_local == filters.form[4].value;
+            });
+        }
+
+        for (let i = 5; i <= 10; i++) {
+            if (filters.form[i].checked) {
+                itemsJSONFilter = itemsJSONFilter.filter(item => {
+                    return item.differential.includes(filters.form[i].value);
+                });
+            }
+        }
+    }
+    return itemsJSONFilter;
 }
 
 function navigateItemDetails(id) {
