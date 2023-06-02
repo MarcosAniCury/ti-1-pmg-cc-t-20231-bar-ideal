@@ -8,7 +8,8 @@
 
 main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     min-height: 100%;
     padding-top: 3%;
 }
@@ -20,12 +21,12 @@ main {
 
 #div-pub-img {
     padding: 10px;
-    max-width: 550px;
+    max-width: 600px;
 }
 
 #div-pub-img>img {
     max-width: 100%;
-    height: 430px;
+    height: 460px;
 }
 
 #div-pub-details-infos {
@@ -42,7 +43,7 @@ main {
     font-size: 40px;
 }
 
-#div-item-mobile-star {
+.div-item-star {
     display: flex;
     align-items: center;
     height: 40px;
@@ -52,4 +53,88 @@ main {
     font-size: 24px;
     margin-top: 16px;
     margin-left: 10px;
+}
+
+#p-pub-value {
+    font-size: 32px;
+    margin-top: 12px;
+}
+
+#p-pub-address {
+    font-size: 32px;
+}
+
+#p-pub-type-food {
+    font-size: 30px;
+}
+
+#p-pub-difference-title {
+    font-size: 32px;
+}
+
+.div-pub-diferrence-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.p-pub-difference {
+    font-size: 26px;
+}
+
+#div-pub-comments {
+    width: 79%;
+}
+
+#p-pub-comments-title {
+    font-size: 32px;
+}
+
+#div-pub-comments-send {
+    border-radius: 8px;
+    background-color: #DC9CB8;
+}
+
+#p-pub-comments-send {
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 4px;
+}
+
+#div-pub-comments-send-button {
+    display: flex;
+    justify-content: end;
+}
+
+#button-pub-comments-send {
+    margin: 12px;
+    padding: 2px 3%;
+    border-style: none;
+    border-radius: 4px;
+}
+
+.div-pub-comments-users {
+    margin-top: 16px;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #DC9CB8;
+}
+
+.div-pub-comments-user {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    padding-right: 20px;
+}
+
+.img-pub-comments-user {
+    margin-left: 6px;
+    margin-right: 10px;
+    max-height: 40px;
+    border-radius: 100%;
+}
+
+.p-pub-comments-users {
+    font-size: 20px;
+    margin-left: 8px;
+    margin-top: 4px;
 }
