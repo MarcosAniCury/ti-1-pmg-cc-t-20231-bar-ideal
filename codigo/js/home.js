@@ -182,5 +182,5 @@ function navigateItemDetails(id) {
         id: id
     };
     const queryString = new URLSearchParams(params).toString();
-    window.location.href = 'http://127.0.0.1:5500/codigo/views/details.html?'+queryString;
+    window.location.href = 'details.html?'+queryString;
 }
