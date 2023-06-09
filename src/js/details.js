@@ -57,7 +57,7 @@ async function loadItemDetails() {
 
     let item = {};
 
-    await fetch('http://177.136.202.132:9598/pubs/'+itemId)
+    await fetch('https://177.136.202.132:9598/pubs/'+itemId)
         .then(response => response.json())
         .then(response => item = response)
         .catch(error => console.log(error));

@@ -64,7 +64,7 @@ async function GenerateItems(filters) {
 
     let itemsJSONFilter = [];
 
-    await fetch('http://177.136.202.132:9598/pubs')
+    await fetch('https://177.136.202.132:9598/pubs')
         .then(response => response.json())
         .then(response => itemsJSONFilter = response)
         .catch(error => console.log(error));
