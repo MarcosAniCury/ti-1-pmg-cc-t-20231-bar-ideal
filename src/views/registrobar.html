@@ -1,0 +1,84 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/registrobar.css">
+    
+</head>
+
+<body>
+    <div>
+        <header id="navbar"><img src="../assets/logo.png" alt="Logo" id="logo"></img></header>
+    </div>
+    
+    <div id="container">
+        <h1>Registre seu bar </h1>
+        <form id="registro">
+            <div id="foto-perfil-div">
+                <img id="picture" src="../assets/person_1.png" alt="default">
+                <form id="foto-perfil-form">
+                    <label for="file" id="uploadBtn">Selecionar foto</label>
+                    <input type="file" id="file" accept="image/jpeg, image/png, image/jpg">
+                </form>
+            </div>
+            <div class="form-part">
+                <label for="name">Insira o nome do bar</label>
+                    <input type="text" id="name" placeholder="Nome do bar..." autocomplete="name"><br>
+                <label for="adress-fully">Insira o endereço completo</label>
+                    <input type="text" id="adress-fully" placeholder=" Modelo: Logradouro ,número, bairro - cidade, estado..."><br>
+                <label for="adress-zone">Insira o bairro ou região</label>
+                <select id="adress-zone" name="adress-zone">    
+                    <option value="" disabled selected>Selecione uma opção...</option>
+                    <option value="Coração Eucarístico">Coração Eucarístico</option>
+                    <option value="Padre Eustáquio">Padre Eustáquio</option>
+                    <option value="Savassi">Savassi</option>
+                </select>
+                
+                <label for="mediaValue">Escolha a faixa de preços do seu bar:</label>
+                    <select id="mediaValue" name="mediaValue">    
+                        <option value="" disabled selected>Selecione uma opção...</option>
+                        <option value="R$ 0-30">R$ 0-30</option>
+                        <option value="R$ 31-50">R$ 31-50</option>
+                        <option value="R$ 51-80">R$ 51-80</option>
+                        <option value="R$ 81-100">R$ 81-100</option>
+                        <option value="R$ 101-150">R$ 101-150</option>
+                        <option value="R$ 151-...">R$ 151 ou mais</option>
+                    </select>
+            </div>
+            <div class="form-part2">
+                <label for="cep" id="">CEP</label>
+                    <input type="text" id="cep" placeholder="CEP..." maxlength="8"><br>
+                <label for="website">Insira um site ou rede social para seu perfil:</label>
+                    <input type="text" id="website" placeholder="Ex: www.instagram.com/estabelecimento/..."><br>
+                    <label for="typeFood">Escolha o tipo de comida servida:</label>
+                        <select id="typeFood" name="typeFood">    
+                            <option value="" disabled selected>Selecione uma opção...</option>
+                            <option value="Mexicano">Mexicano</option>
+                            <option value="Espetos">Espetos</option>
+                            <option value="Italiano">Italiano</option>
+                        </select>
+                    <label for="typeLocals">Escolha a melhor opção:</label>
+                        <select id="typeLocals" name="typeLocals">    
+                            <option value="" disabled selected>Selecione uma opção...</option>
+                            <option value="Bar">Bar</option>
+                            <option value="Restaurante">Restaurante </option>
+                            <option value="Pub">Pub</option>
+                        </select>
+                
+                
+            </div>
+        </form>
+        <button id="submit">Enviar</button> 
+    </div>
+    <button id="delete">Deletar apartir do ID do bar</button>
+    <button id="mostrar">Mostrar dados salvos</button>
+    <button id="edit">Editar dados salvos</button>
+    <div id="tela">
+
+    </div>
+    <script src="../js/registrobar.js"></script>
+</body>
+</html>

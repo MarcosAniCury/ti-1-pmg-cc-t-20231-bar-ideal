@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(../assets/victoria-brown-5.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #fff;
+}
+
+    #navbar {
+    position: absolute;
+    width: 100%;
+    height: 78px;
+    left: 0px;
+    top: 0px;
+    background: #AD3C6E;
+    }
+
+    #logo{
+    width: 210px;
+    padding: 10px;
+    padding-left: 15px; 
+    }
+
+    h1{
+    font-size: 2em;
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0, auto;
+    }
+
+    #container{
+    background-color: rgb(220, 156, 184, 0.9);
+    border-radius: 25px;
+    align-items: center;
+    margin: 10%;
+    margin-top: 170px;
+    padding-bottom: 30px;
+    }
+        #foto-perfil-div{
+        background-color: rgb(220, 156, 184, 0) ;
+        width: 220px;
+        height: 270px;
+        align-items: center;
+        margin: auto;
+        border-radius: 20px;
+        
+        }
+        #picture{
+            align-items: center;
+            border-radius: 50%;
+            height: 140px;
+            width: 140px;
+            margin: auto;
+            display: flex;
+        }
+
+        #container *{
+        padding: 30px;
+        }
+
+        #container #file{
+        display: none;
+        }
+
+        #container #uploadBtn{
+        background-color: rgb(173, 60, 110,0.8);
+        width: 150px;
+        border-radius: 20px;
+        display: block;
+        align-items: center;
+        margin: auto;
+        font-size: 20px;
+        cursor: pointer;
+        }
+
+        .form-part{
+        align-items: center;
+        margin: auto;
+        display: inline-block;
+        width: 44%;
+        vertical-align: top;
+        margin-left: 9px;
+        }
+
+        #container input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: 400px;
+        height: 30px;
+        padding: 0px;
+        border-radius: 100px;
+        border-color: lightslategray;
+        padding-left: 20px;
+        }
+
+        #container label{
+        display: block;
+        font-weight: bold;
+        align-items: center;
+        text-align: center;    
+        }
+        
+        #container select{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            width: 420px;
+            height: 30px;
+            padding: 0px;
+            border-radius: 100px;
+            border-color: lightslategray;
+            padding-left: 20px;
+        }
+        
+
+        .form-part2{
+            align-items: flex-end;
+            margin: auto;
+            display: inline-block;
+            width: 44%;
+            vertical-align: top;
+            
+        }
+button {
+    align-items: center;
+    display: flex;
+    margin: auto;
+    border-style: none;
+    background-color: rgb(173, 60, 110,0.8);
+    width: 115px;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center; 
+    }
+#delete, #mostrar,#edit{
+    display: inline-flex;
+}
+p {
+    font-size: 2em;
+    color: white;
+}
+span {
+    color: red;
+}
