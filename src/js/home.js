@@ -115,6 +115,16 @@ function modalFilterOptions(elementId, options) {
     zoneSelect.innerHTML = htmlOptions;
 }
 
+// Functions modal
+function modalUserAparrence() {
+    let modalUserStyle = document.getElementById("div-modal-user").style;
+    if (modalUserStyle.display == "" || modalUserStyle.display == "none") {
+        modalUserStyle.display = "flex";
+    } else {
+        modalUserStyle.display = "none";
+    }
+}
+
 function filterByName() {
     let textFilter = document.getElementById("input-filter-name-bar").value;
     GenerateItems({

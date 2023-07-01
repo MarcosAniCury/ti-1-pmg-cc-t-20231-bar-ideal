@@ -85,16 +85,28 @@
             </div>
         </form>
     </div>
+    <div id="div-modal-user">
+        <button id="button-modal-user-close" onclick="modalUserAparrence()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                viewBox="0 0 16 16">
+                <path
+                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+            </svg>
+        </button>
+        <div id="div-modal-container-user">
+            <a href="registrobar.html" id="a-modal-user">Adicionar Bares</a>
+        </div>
+    </div>
 
     <header>
         <a id="div-logo" href="home.html">
             <img src="../assets/logo.png" alt="Logo" id="logo"></img>
         </a>
-        <div id="div-user">
+        <div id="div-user" onclick="modalUserAparrence()">
             <p id="user-name">Marcos Ani Cury Vinagre Silva</p>
             <img id="img-user" src="../assets/person_1.png">
         </div>
-        <div id="div-mobile-user">
+        <div id="div-mobile-user" onclick="modalUserAparrence()">
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-list"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"

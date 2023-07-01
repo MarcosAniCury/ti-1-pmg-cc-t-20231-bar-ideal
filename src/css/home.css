@@ -11,6 +11,41 @@ body {
     width: 100%;
 }
 
+#div-modal-user {
+    display: none;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+#div-modal-container-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    height: 80%;
+    background-color: #AD3C6E;
+}
+
+#button-modal-user-close {
+    position: fixed;
+    top: 9%;
+    right: 40%;
+    padding: 20px;
+    background-color: transparent;
+    border-style: none;
+}
+
+#a-modal-user {
+    color: #000;
+    text-decoration: none;
+}
+
 #div-modal-filter {
     display: none;
     position: fixed;
