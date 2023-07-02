@@ -2,22 +2,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#navbar {
-    position: absolute;
-    width: 100%;
-    height: 78px;
-    left: 0px;
-    top: 0px;
-    background: #AD3C6E;
-}
-
-#logo{
-    width: 210px;
-    padding: 10px;
-    padding-left: 15px; 
-}
-
 h1{
+    padding-top: 20px;
+    padding-bottom: 20px;
     font-size: 2em;
     display: flex;
     justify-content: center;
@@ -30,16 +17,19 @@ h1{
     align-items: center;
     margin: 4%;
     padding-bottom: 30px;
+    height: 90%;
 }
 
 #foto-perfil-div{
     background-color: rgb(220, 156, 184, 0) ;
     width: 220px;
-    height: 270px;
+    height: 240px;
     align-items: center;
     margin: auto;
     border-radius: 20px;
-
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
 }
 #picture{
     align-items: center;
@@ -50,6 +40,11 @@ h1{
     display: flex;
 }
 
+#div-inputs {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 #container #file{
     display: none;
 }
@@ -58,9 +53,7 @@ h1{
     background-color: rgb(173, 60, 110,0.8);
     width: 150px;
     border-radius: 20px;
-    display: block;
     align-items: center;
-    margin: auto;
     font-size: 20px;
     cursor: pointer;
 }
@@ -87,7 +80,7 @@ h1{
     padding-left: 20px;
 }
 
-#container label{
+#container{
     display: block;
     font-weight: bold;
     align-items: center;
@@ -107,30 +100,28 @@ h1{
     padding-left: 20px;
 }
 
-
-.form-part2{
-    align-items: flex-end;
-    margin: auto;
-    display: inline-block;
-    width: 44%;
-    vertical-align: top;
-    
-}
-button {
-    align-items: center;
-    display: flex;
-    margin: auto;
-    border-style: none;
-    background-color: rgb(173, 60, 110,0.8);
-    width: 115px;
-    border-radius: 20px;
-    font-size: 20px;
-    cursor: pointer;
-    text-align: center; 
-}
 #delete, #mostrar,#edit{
     display: inline-flex;
 }
 span {
     color: red;
+}
+
+button, #uploadBtn {
+    margin-top: 40px;
+    display: flex;
+    width: 10%;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    background-color: #AD3C6E;
+    border-radius: 20px;
+    border-style: none;
+    margin: auto;
+    font-size: 20px;
+}
+
+.div-collumn-inputs {
+    display: flex;
+    flex-direction: column;
 }

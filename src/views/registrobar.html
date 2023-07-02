@@ -5,14 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/registrobar.css">
     
 </head>
 
 <body>
-    <div>
-        <a id="navbar" href="home.html"><img src="../assets/logo.png" alt="Logo" id="logo"></img></a>
-    </div>
+    <header>
+        <a id="div-logo" href="home.html">
+            <img src="../assets/logo.png" alt="Logo" id="logo"></img>
+        </a>
+        <div id="div-user" onclick="modalUserAparrence()">
+            <p id="user-name">Marcos Ani Cury Vinagre Silva</p>
+            <img id="img-user" src="../assets/person_1.png">
+        </div>
+        <div id="div-mobile-user" onclick="modalUserAparrence()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg>
+        </div>
+    </header>
     
     <div id="container">
         <h1>Registre seu bar </h1>
@@ -20,55 +34,57 @@
             <div id="foto-perfil-div">
                 <img id="picture" src="../assets/person_1.png" alt="default">
                 <form id="foto-perfil-form">
-                    <label for="file" id="uploadBtn">Selecionar foto</label>
+                    <label for="file" id="uploadBtn"><p>Selecionar foto</p></label>
                     <input type="file" id="file" accept="image/jpeg, image/png, image/jpg">
                 </form>
             </div>
-            <div class="">
-                <label for="name">Insira o nome do bar</label>
-                    <input type="text" id="name" placeholder="Nome do bar..." autocomplete="name"><br>
-                <label for="adress-fully">Insira o endereço completo</label>
-                    <input type="text" id="adress-fully" placeholder=" Modelo: Logradouro ,número, bairro - cidade, estado..."><br>
-                <label for="adress-zone">Insira o bairro ou região</label>
-                <select id="adress-zone" name="adress-zone">    
-                    <option value="" disabled selected>Selecione uma opção...</option>
-                    <option value="Coração Eucarístico">Coração Eucarístico</option>
-                    <option value="Padre Eustáquio">Padre Eustáquio</option>
-                    <option value="Savassi">Savassi</option>
-                </select>
-                
-                <label for="mediaValue">Escolha a faixa de preços do seu bar:</label>
-                    <select id="mediaValue" name="mediaValue">    
+            <div id="div-inputs">
+                <div class="div-collumn-inputs">
+                    <label for="name">Insira o nome do bar</label>
+                        <input type="text" id="name" placeholder="Nome do bar..." autocomplete="name"><br>
+                    <label for="adress-fully">Insira o endereço completo</label>
+                        <input type="text" id="adress-fully" placeholder=" Modelo: Logradouro ,número, bairro - cidade, estado..."><br>
+                    <label for="adress-zone">Insira o bairro ou região</label>
+                    <select id="adress-zone" name="adress-zone">    
                         <option value="" disabled selected>Selecione uma opção...</option>
-                        <option value="R$ 0-30">R$ 0-30</option>
-                        <option value="R$ 31-50">R$ 31-50</option>
-                        <option value="R$ 51-80">R$ 51-80</option>
-                        <option value="R$ 81-100">R$ 81-100</option>
-                        <option value="R$ 101-150">R$ 101-150</option>
-                        <option value="R$ 151-...">R$ 151 ou mais</option>
+                        <option value="Coração Eucarístico">Coração Eucarístico</option>
+                        <option value="Padre Eustáquio">Padre Eustáquio</option>
+                        <option value="Savassi">Savassi</option>
                     </select>
-            </div>
-            <div class="form-part2">
-                <label for="cep" id="">CEP</label>
-                    <input type="text" id="cep" placeholder="CEP..." maxlength="8"><br>
-                <label for="website">Insira um site ou rede social para seu perfil:</label>
-                    <input type="text" id="website" placeholder="Ex: www.instagram.com/estabelecimento/..."><br>
-                    <label for="typeFood">Escolha o tipo de comida servida:</label>
-                        <select id="typeFood" name="typeFood">    
+                    
+                    <label for="mediaValue">Escolha a faixa de preços do seu bar:</label>
+                        <select id="mediaValue" name="mediaValue">    
                             <option value="" disabled selected>Selecione uma opção...</option>
-                            <option value="Mexicano">Mexicano</option>
-                            <option value="Espetos">Espetos</option>
-                            <option value="Italiano">Italiano</option>
+                            <option value="R$ 0-30">R$ 0-30</option>
+                            <option value="R$ 31-50">R$ 31-50</option>
+                            <option value="R$ 51-80">R$ 51-80</option>
+                            <option value="R$ 81-100">R$ 81-100</option>
+                            <option value="R$ 101-150">R$ 101-150</option>
+                            <option value="R$ 151-...">R$ 151 ou mais</option>
                         </select>
-                    <label for="typeLocals">Escolha a melhor opção:</label>
-                        <select id="typeLocals" name="typeLocals">    
-                            <option value="" disabled selected>Selecione uma opção...</option>
-                            <option value="Bar">Bar</option>
-                            <option value="Restaurante">Restaurante </option>
-                            <option value="Pub">Pub</option>
-                        </select>
-                
-                
+                </div>
+                <div class="div-collumn-inputs">
+                    <label for="cep" id="">CEP</label>
+                        <input type="text" id="cep" placeholder="CEP..." maxlength="8"><br>
+                    <label for="website">Insira um site ou rede social para seu perfil:</label>
+                        <input type="text" id="website" placeholder="Ex: www.instagram.com/estabelecimento/..."><br>
+                        <label for="typeFood">Escolha o tipo de comida servida:</label>
+                            <select id="typeFood" name="typeFood">    
+                                <option value="" disabled selected>Selecione uma opção...</option>
+                                <option value="Mexicano">Mexicano</option>
+                                <option value="Espetos">Espetos</option>
+                                <option value="Italiano">Italiano</option>
+                            </select>
+                        <label for="typeLocals">Escolha a melhor opção:</label>
+                            <select id="typeLocals" name="typeLocals">    
+                                <option value="" disabled selected>Selecione uma opção...</option>
+                                <option value="Bar">Bar</option>
+                                <option value="Restaurante">Restaurante </option>
+                                <option value="Pub">Pub</option>
+                            </select>
+                    
+                    
+                </div>
             </div>
         </form>
         <button id="submit"><p>Enviar</p></button> 
