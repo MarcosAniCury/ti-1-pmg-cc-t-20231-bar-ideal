@@ -250,13 +250,30 @@ function initializeSearchInput(locator) {
   });
 }
 
+function prioritizeItem(list, itemId) {
+  const sortedList = [...list];
+
+  sortedList.sort((a, b) => {
+    if (a.id === itemId) {
+      return -1; // Coloca o item 'a' em primeiro lugar
+    } else if (b.id === itemId) {
+      return 1; // Coloca o item 'b' em primeiro lugar
+    } else {
+      return 0; // Mantém a ordem original
+    }
+  });
+
+  return sortedList;
+}
+
 async function getAllItems() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const firstId = urlParams.get('id');
   const response = await fetch('http://177.136.202.132:9598/pubs/');
   const items = await response.json();
-  return items;
+  const prioritizedItems = prioritizeItem(items, firstId);
+  return prioritizedItems;
 }
 
 async function addLatLonItems(items) {
