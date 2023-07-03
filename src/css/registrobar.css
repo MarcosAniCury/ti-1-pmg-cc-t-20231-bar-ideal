@@ -125,3 +125,11 @@ button, #uploadBtn {
     display: flex;
     flex-direction: column;
 }
+
+#diff{
+    padding: 20px;
+}
+.div-collumn-checkbox{
+    display: inline-block;
+    flex-direction: column;
+}
