@@ -1,5 +1,4 @@
 'use strict';
-
 /** Função auxiliar para gerar um URL de rotas do Google Maps
 
  */
@@ -32,11 +31,11 @@ function LocatorPlus(configuration) {
   const panelEl = document.getElementById('locations-panel');
   locator.panelListEl = document.getElementById('locations-panel-list');
   const sectionNameEl =
-      document.getElementById('location-results-section-name');
+    document.getElementById('location-results-section-name');
   const resultsContainerEl = document.getElementById('location-results-list');
 
   const itemsTemplate = Handlebars.compile(
-      document.getElementById('locator-result-items-tmpl').innerHTML);
+    document.getElementById('locator-result-items-tmpl').innerHTML);
 
   locator.searchLocation = null;
   locator.searchLocationMarker = null;
@@ -47,7 +46,7 @@ function LocatorPlus(configuration) {
   locator.map = new google.maps.Map(mapEl, configuration.mapOptions);
 
   // Seleção da loja.
-  const selectResultItem = function(locationIdx, panToMarker, scrollToResult) {
+  const selectResultItem = function (locationIdx, panToMarker, scrollToResult) {
     locator.selectedLocationIdx = locationIdx;
     for (let locationElem of resultsContainerEl.children) {
       locationElem.classList.remove('selected');
@@ -64,20 +63,20 @@ function LocatorPlus(configuration) {
   };
 
   // Crie um marcador para cada local.
-  const markers = locator.locations.map(function(location, index) {
+  const markers = locator.locations.map(function (location, index) {
     const marker = new google.maps.Marker({
       position: location.coords,
       map: locator.map,
       title: location.title,
     });
-    marker.addListener('click', function() {
+    marker.addListener('click', function () {
       selectResultItem(index, false, true);
     });
     return marker;
   });
 
   // Ajustar o mapa aos limites do marcador.
-  locator.updateBounds = function() {
+  locator.updateBounds = function () {
     const bounds = new google.maps.LatLngBounds();
     if (locator.searchLocationMarker) {
       bounds.extend(locator.searchLocationMarker.getPosition());
@@ -93,35 +92,35 @@ function LocatorPlus(configuration) {
 
   // obter a distância de um local de loja para a localização do usuário,
   // usado na classificação da lista.
-  const getLocationDistance = function(location) {
+  const getLocationDistance = function (location) {
     if (!locator.searchLocation) return null;
 
     // Fall back to straight-line distance.
     return google.maps.geometry.spherical.computeDistanceBetween(
-        new google.maps.LatLng(location.coords),
-        locator.searchLocation.location);
+      new google.maps.LatLng(location.coords),
+      locator.searchLocation.location);
   };
 
   // Renderizar a lista de resultados --------------------------------------------------
-  const getResultIndex = function(elem) {
+  const getResultIndex = function (elem) {
     return parseInt(elem.getAttribute('data-location-index'));
   };
 
-  locator.renderResultsList = function() {
+  locator.renderResultsList = function () {
     let locations = locator.locations.slice();
     for (let i = 0; i < locations.length; i++) {
       locations[i].index = i;
     }
     if (locator.searchLocation) {
       sectionNameEl.textContent =
-          'Nearest locations (' + locations.length + ')';
-      locations.sort(function(a, b) {
+        'Nearest locations (' + locations.length + ')';
+      locations.sort(function (a, b) {
         return getLocationDistance(a) - getLocationDistance(b);
       });
     } else {
       sectionNameEl.textContent = `All locations (${locations.length})`;
     }
-    const resultItemContext = {locations: locations};
+    const resultItemContext = { locations: locations };
     resultsContainerEl.innerHTML = itemsTemplate(resultItemContext);
     for (let item of resultsContainerEl.children) {
       const resultIndex = getResultIndex(item);
@@ -129,7 +128,7 @@ function LocatorPlus(configuration) {
         item.classList.add('selected');
       }
 
-      const resultSelectionHandler = function() {
+      const resultSelectionHandler = function () {
         if (resultIndex !== locator.selectedLocationIdx) {
           selectResultItem(resultIndex, true, false);
         }
@@ -140,20 +139,20 @@ function LocatorPlus(configuration) {
       // acessível na guia de navegação.
       item.addEventListener('click', resultSelectionHandler);
       item.querySelector('.select-location')
-          .addEventListener('click', function(e) {
-            resultSelectionHandler();
-            e.stopPropagation();
-          });
+        .addEventListener('click', function (e) {
+          resultSelectionHandler();
+          e.stopPropagation();
+        });
 
       // Clicar no botão de direções abrirá as direções do Google Maps em um
       // Nova aba
       const origin = (locator.searchLocation != null) ?
-          locator.searchLocation.location :
-          '';
+        locator.searchLocation.location :
+        '';
       const destination = locator.locations[resultIndex];
       const googleMapsUrl = generateDirectionsURL(origin, destination);
       item.querySelector('.directions-button')
-          .setAttribute('href', googleMapsUrl);
+        .setAttribute('href', googleMapsUrl);
     }
   };
 
@@ -174,7 +173,7 @@ function initializeSearchInput(locator) {
   const searchInputEl = document.getElementById('location-search-input');
   const searchButtonEl = document.getElementById('location-search-button');
 
-  const updateSearchLocation = function(address, location) {
+  const updateSearchLocation = function (address, location) {
     if (locator.searchLocationMarker) {
       locator.searchLocationMarker.setMap(null);
     }
@@ -182,7 +181,7 @@ function initializeSearchInput(locator) {
       locator.searchLocation = null;
       return;
     }
-    locator.searchLocation = {'address': address, 'location': location};
+    locator.searchLocation = { 'address': address, 'location': location };
     locator.searchLocationMarker = new google.maps.Marker({
       position: location,
       map: locator.map,
@@ -211,23 +210,23 @@ function initializeSearchInput(locator) {
     locator.renderResultsList();
   };
 
-  const geocodeSearch = function(query) {
+  const geocodeSearch = function (query) {
     if (!query) {
       return;
     }
 
-    const handleResult = function(geocodeResult) {
+    const handleResult = function (geocodeResult) {
       searchInputEl.value = geocodeResult.formatted_address;
       updateSearchLocation(
-          geocodeResult.formatted_address, geocodeResult.geometry.location);
+        geocodeResult.formatted_address, geocodeResult.geometry.location);
     };
 
     if (geocodeCache.has(query)) {
       handleResult(geocodeCache.get(query));
       return;
     }
-    const request = {address: query, bounds: locator.map.getBounds()};
-    geocoder.geocode(request, function(results, status) {
+    const request = { address: query, bounds: locator.map.getBounds() };
+    geocoder.geocode(request, function (results, status) {
       if (status === 'OK') {
         if (results.length > 0) {
           const result = results[0];
@@ -239,41 +238,84 @@ function initializeSearchInput(locator) {
   };
 
   // Configure a geocodificação na entrada de pesquisa
-  searchButtonEl.addEventListener('click', function() {
+  searchButtonEl.addEventListener('click', function () {
     geocodeSearch(searchInputEl.value.trim());
   });
 
   // Adicione um ouvinte de evento para a tecla Enter.
-  searchInputEl.addEventListener('keypress', function(evt) {
+  searchInputEl.addEventListener('keypress', function (evt) {
     if (evt.key === 'Enter') {
       geocodeSearch(searchInputEl.value);
     }
   });
 }
 
-  
+async function getAllItems() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const firstId = urlParams.get('id');
+  const response = await fetch('http://177.136.202.132:9598/pubs/');
+  const items = await response.json();
+  return items;
+}
+
+async function addLatLonItems(items) {
+  const updatedItems = await Promise.all(items.map(async (item) => {
+    const endereco = item.address.fully; // Substitua pelo endereço desejado
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(endereco)}&format=json&limit=1`;
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.length > 0) {
+      item.address.lat = Number(data[0].lat);
+      item.address.lng = Number(data[0].lon);
+    } else {
+      console.log("Nenhum resultado encontrado.");
+    }
+    return item;
+  }));
+  return updatedItems;
+}
+
+async function setConfiguration() {
+  const items = await getAllItems();
+  const updatedItems = await addLatLonItems(items);
+  const locations = updatedItems.map(item => ({
+    title: item.address.fully.trim().split(" -")[0],
+    address1: item.address.fully.trim().split(",")[0],
+    address2: item.address.fully.trim() + " - MG, Brasil",
+    coords: { lat: item.address.lat, lng: item.address.lng },
+    placeId: item.id
+  }));
+
+  const chave = "mapConfiguration";
+  const valor = JSON.stringify(locations);
+  console.log(locations);
+  localStorage.setItem(chave, valor);
+}
 
 function initMap() {
-    const myLatLng = { lat: -25.363, lng: 131.044 };
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: myLatLng,
-    });
-  
-    new google.maps.Marker({
-      position: myLatLng,
-      map,
-      title: "Hello World!",
-    });
-    new google.maps.Marker({
-        position:  {lat: -19.9362084,lng: -44.0268516},
-        map,
-        title: "Barzinho",
+  const myLatLng = { lat: -25.363, lng: 131.044 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: myLatLng,
+  });
 
-    }
+  new google.maps.Marker({
+    position: myLatLng,
+    map,
+    title: "Hello World!",
+  });
+  new google.maps.Marker({
+    position: { lat: -19.9362084, lng: -44.0268516 },
+    map,
+    title: "Barzinho",
+  });
+}
 
-
-    )
-  }
-  
-  window.initMap = initMap;
+setConfiguration()
+  .then(() => {
+    window.initMap = initMap;
+  })
+  .catch(error => {
+    console.log(error);
+  });
