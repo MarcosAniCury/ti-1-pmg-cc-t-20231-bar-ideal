@@ -38,7 +38,7 @@ function GenerateHTMLCodeItem(item) {
     return `
         <div class="div-item" onclick="navigateItemDetails(${item.id})">
             <div class="div-item-img">   
-                <img src="../assets/Belli_Belli_vista.jpg" alt="Image Bar">
+                <img src="${item.image}" alt="Image Bar">
             </div>  
             <div class="div-item-text">
                 <p class="p-item-title">${item.name}</p>
@@ -55,7 +55,7 @@ function GenerateHTMLCodeItem(item) {
                 ${divStar}
             </div>
         </div>`;
-        
+
 }
 
 async function GenerateItems(filters) {
@@ -192,5 +192,5 @@ function navigateItemDetails(id) {
         id: id
     };
     const queryString = new URLSearchParams(params).toString();
-    window.location.href = 'details.html?'+queryString;
+    window.location.href = 'details.html?' + queryString;
 }

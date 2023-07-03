@@ -62,24 +62,29 @@ async function loadItemDetails() {
         .then(response => item = response)
         .catch(error => console.log(error));
 
-    document.getElementById("div-pub-details-infos").innerHTML = `
-        <div id="div-pub-name-share">
-            <p id="p-pub-name">${item.name}</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
-                <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
-            </svg>
+    document.getElementById("div-pub-details").innerHTML = `
+        <div id="div-pub-img">
+            <img src="${item.image}" alt="Image pub">
         </div>
-        <div class="div-item-star">
-            ${GenerateHTMLCodeStarsItem(item.n_stars)}
-            <p id="p-pub-details-star-text">(${item.n_reviews})</p>
-        </div>
-        <p id="p-pub-value">R$ ~${item.media_value} (P/1)</p>
-        <p id="p-pub-address">${item.address.fully}</p>
-        <p id="p-pub-type-food">Tipo de comida: ${item.type_food}</p>
-        <p id="p-pub-difference-title">Diferênciais:</p>
-        <div id="div-pub-difference">
-            ${generateHTMLDifferential(item.differential)}
-        </div>
+        <div id="div-pub-details-infos">
+            <div id="div-pub-name-share">
+                <p id="p-pub-name">${item.name}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
+                    <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+                </svg>
+            </div>
+            <div class="div-item-star">
+                ${GenerateHTMLCodeStarsItem(item.n_stars)}
+                <p id="p-pub-details-star-text">(${item.n_reviews})</p>
+            </div>
+            <p id="p-pub-value">R$ ~${item.media_value} (P/1)</p>
+            <p id="p-pub-address">${item.address.fully}</p>
+            <p id="p-pub-type-food">Tipo de comida: ${item.type_food}</p>
+            <p id="p-pub-difference-title">Diferênciais:</p>
+            <div id="div-pub-difference">
+                ${generateHTMLDifferential(item.differential)}
+            </div>
+        </div>     
     `;
 }
 
