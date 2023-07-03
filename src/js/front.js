@@ -306,7 +306,6 @@ async function setConfiguration() {
 
   const chave = "mapConfiguration";
   const valor = JSON.stringify(locations);
-  console.log(locations);
   localStorage.setItem(chave, valor);
 }
 
