@@ -15,4 +15,4 @@ O objetivo do projeto é desenvolver uma solução digital para o problema de di
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Para utilizar a aplicação basta apenas fazer um pull do projeto e rodar o arquivo index.html no live server do visual studio code
